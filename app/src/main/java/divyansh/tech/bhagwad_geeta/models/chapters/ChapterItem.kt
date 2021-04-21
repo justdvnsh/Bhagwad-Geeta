@@ -1,4 +1,4 @@
-package divyansh.tech.bhagwad_geeta.models.Chapter
+package divyansh.tech.bhagwad_geeta.models.chapters
 
 
 import com.squareup.moshi.Json

@@ -86,4 +86,9 @@ dependencies {
             "com.squareup.retrofit2:converter-moshi:$moshi",
             "com.squareup.retrofit2:retrofit:$retrofit"
     )
+
+    // epoxy controller
+    implementation "com.airbnb.android:epoxy:$epoxyVersion"
+    implementation "com.airbnb.android:epoxy-databinding:$epoxyVersion"
+    annotationProcessor "com.airbnb.android:epoxy-processor:$epoxyVersion"
 }

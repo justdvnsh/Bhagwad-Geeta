@@ -1,6 +1,6 @@
 package divyansh.tech.bhagwad_geeta.data.api
 
-import divyansh.tech.bhagwad_geeta.models.Chapter.ChapterItem
+import divyansh.tech.bhagwad_geeta.models.chapters.ChapterItem
 import divyansh.tech.bhagwad_geeta.models.verses.Slok
 import retrofit2.Response
 import retrofit2.http.GET

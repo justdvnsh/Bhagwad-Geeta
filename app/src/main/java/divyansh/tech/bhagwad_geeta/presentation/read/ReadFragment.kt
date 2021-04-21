@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
 import divyansh.tech.bhagwad_geeta.R
 import divyansh.tech.bhagwad_geeta.databinding.FragmentReadBinding
+import divyansh.tech.bhagwad_geeta.models.chapters.ChapterItem
 import divyansh.tech.bhagwad_geeta.utils.ResultWrapper
 
 @AndroidEntryPoint
@@ -34,7 +35,14 @@ class ReadFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getDailyContent()
+        viewModel.getChapters()
         setupObservers()
+    }
+
+    private fun setupRecyclerView(data: List<ChapterItem>) {
+        binding.chaptersRv.withModels {
+            
+        }
     }
 
     private fun setupObservers() {
@@ -42,6 +50,14 @@ class ReadFragment: Fragment() {
             when (it) {
                 is ResultWrapper.Loading -> {}
                 is ResultWrapper.Success -> binding.slok = it.data
+                is ResultWrapper.Error -> {}
+            }
+        })
+
+        viewModel.chapters.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is ResultWrapper.Loading -> {}
+                is ResultWrapper.Success -> setupRecyclerView(it.data!!)
                 is ResultWrapper.Error -> {}
             }
         })
