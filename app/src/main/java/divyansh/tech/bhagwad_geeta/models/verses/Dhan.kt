@@ -1,8 +1,7 @@
-package divyansh.tech.bhagwad_geeta.data.models.Verses
+package divyansh.tech.bhagwad_geeta.models.verses
 
 
 import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
 
 data class Dhan(
     @Json(name = "author")

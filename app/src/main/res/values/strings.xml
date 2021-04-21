@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Bhagwad-Geeta</string>
+    <string name="daily_content_header">Daily Content</string>
+    <string name="chapters">Chapters</string>
 </resources>

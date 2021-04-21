@@ -10,6 +10,10 @@ class ChapterRepo @Inject constructor(
     private val chapterService: ChapterService
 ) {
 
+    /*Function to get random verse*/
+    suspend fun getRandomVerse() =
+        chapterService.getRandomVerse()
+
     /*
     * Function to get all the chapters
     * */

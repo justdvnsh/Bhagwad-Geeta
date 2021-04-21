@@ -1,7 +1,6 @@
-package divyansh.tech.bhagwad_geeta.data.models.Chapter
+package divyansh.tech.bhagwad_geeta.models.Chapter
 
 import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
 
 data class Meaning(
     @Json(name = "en")

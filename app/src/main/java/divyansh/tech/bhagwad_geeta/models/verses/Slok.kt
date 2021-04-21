@@ -1,10 +1,9 @@
-package divyansh.tech.bhagwad_geeta.data.models.Verses
+package divyansh.tech.bhagwad_geeta.models.verses
 
 
 import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
 
-data class Verse(
+data class Slok(
     @Json(name = "abhinav")
     val abhinav: Abhinav,
     @Json(name = "adi")
