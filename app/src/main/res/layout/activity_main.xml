@@ -1,69 +1,31 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="20dp"
-    android:layout_gravity="bottom">
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        app:layout_anchor="@id/bar"
-        android:layout_marginBottom="35dp"
-        android:src="@drawable/ic_baseline_play_arrow_24"
-        app:backgroundTint="@color/grey"
-        android:outlineAmbientShadowColor="@color/grey"
-        android:outlineProvider="none"
-        android:outlineSpotShadowColor="@color/grey"
-        android:contentDescription="play" />
-
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bar"
+<layout>
+    <data />
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:backgroundTint="@color/grey">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-        <LinearLayout
+        <androidx.fragment.app.FragmentContainerView
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/mainNavHost"
+            app:layout_constraintBottom_toTopOf="@id/bottom_bar_layout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:defaultNavHost="true"
+            />
+
+        <include
+            android:id="@+id/bottom_bar_layout"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/read"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="?android:attr/selectableItemBackground"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:text="Read"
-                android:textColor="@color/black"
-                app:drawableTopCompat="@drawable/ic_baseline_menu_book_24">
-            </TextView>
-
-
-            <TextView
-                android:id="@+id/settings"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="?android:attr/selectableItemBackground"
-                android:drawableTop="@drawable/ic_baseline_settings_24"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:text="Settings"
-                android:textColor="@color/black">
-
-            </TextView>
-
-        </LinearLayout>
-
-    </com.google.android.material.bottomappbar.BottomAppBar>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            layout="@layout/bottom_bar"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
