@@ -11,13 +11,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import divyansh.tech.bhagwad_geeta.R
 import divyansh.tech.bhagwad_geeta.databinding.FragmentReadBinding
+import divyansh.tech.bhagwad_geeta.domain.Callbacks
 import divyansh.tech.bhagwad_geeta.domain.chapter.epoxy.ChapterController
+import divyansh.tech.bhagwad_geeta.presentation.chapter.ChapterFragment
 import divyansh.tech.bhagwad_geeta.utils.ResultWrapper
 import kotlinx.android.synthetic.main.fragment_read.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ReadFragment: Fragment() {
+class ReadFragment: Fragment(), Callbacks {
 
     private lateinit var binding: FragmentReadBinding
     private val viewModel: ReadViewModel by viewModels()
@@ -67,5 +69,15 @@ class ReadFragment: Fragment() {
                 is ResultWrapper.Error -> {}
             }
         })
+    }
+
+    override fun onChapterClicked(chapterNum: Int) {
+        requireActivity().supportFragmentManager.beginTransaction().apply {
+            ChapterFragment().arguments = Bundle().apply {
+                putInt("NUM", chapterNum)
+            }
+            replace(R.id.mainNavHost, ChapterFragment())
+            commit()
+        }
     }
 }

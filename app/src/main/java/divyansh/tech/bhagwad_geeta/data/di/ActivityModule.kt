@@ -1,10 +1,13 @@
 package divyansh.tech.bhagwad_geeta.data.di
 
+import android.app.Activity
+import androidx.appcompat.app.AppCompatActivity
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.scopes.ActivityScoped
+import divyansh.tech.bhagwad_geeta.domain.Callbacks
 import divyansh.tech.bhagwad_geeta.presentation.player.PlayerFragment
 import divyansh.tech.bhagwad_geeta.presentation.read.ReadFragment
 import divyansh.tech.bhagwad_geeta.presentation.settings.SettingsFragment

@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="android.view.View" />
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"
+            />
         <variable
             name="chapter"
             type="divyansh.tech.bhagwad_geeta.models.gson.chapter.ChapterItem"
@@ -27,6 +30,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="10dp"
+            android:onClick="@{clickListener}"
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
