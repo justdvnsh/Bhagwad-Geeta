@@ -1,16 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <data />
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:expandableTextView="http://schemas.android.com/apk/res-auto">
 
-        <TextView
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:text="CHPATER FRAGMENT"
-            android:gravity="center"
+    <data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"
+            />
+        <variable
+            name="textViewClickListener"
+            type="android.view.View.OnClickListener"
+            />
+        <variable
+            name="chapter"
+            type="divyansh.tech.bhagwad_geeta.models.gson.chapter.ChapterItem"
             />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </data>
+
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            >
+
+            <ImageView
+                android:id="@+id/goBacktoReadFragment"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                />
+
+            <TextView
+                android:id="@+id/chapter_number_header"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@{`Chapter ` + String.valueOf(chapter.chapterNumber)}"
+                tools:text="Chapter 1"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="start"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/goBacktoReadFragment"
+                app:layout_constraintBottom_toBottomOf="@id/goBacktoReadFragment"
+                android:layout_marginStart="10dp"
+                />
+
+            <TextView
+                android:id="@+id/chapter_name_tv"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="@{chapter.translation}"
+                tools:text="Arjun's Dilemma"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:gravity="start"
+                app:layout_constraintTop_toBottomOf="@id/goBacktoReadFragment"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/chapter_transliteration_tv"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="@{chapter.transliteration}"
+                tools:text="Arjun Viṣhād Yog"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginTop="10dp"
+                android:gravity="start"
+                app:layout_constraintTop_toBottomOf="@id/chapter_name_tv"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/chapter_summary_tv"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/chapter_transliteration_tv"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="10dp"
+                android:text="@{chapter.summary.en}"
+                android:onClick="@{textViewClickListener}"
+                tools:text="The first chapter of the Bhagavad Gita - Arjuna Vishada Yoga introduces the setup, the setting, the characters and the circumstances that led to the epic battle of Mahabharata, fought between the Pandavas and the Kauravas. It outlines the reasons that led to the revelation of the of Bhagavad Gita.\nAs both armies stand ready for the battle, the mighty warrior Arjuna, on observing the warriors on both sides becomes increasingly sad and depressed due to the fear of losing his relatives and friends and the consequent sins attributed to killing his own relatives. So, he surrenders to Lord Krishna, seeking a solution. Thus, follows the wisdom of the Bhagavad Gita."
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginTop="10dp"
+                android:gravity="start"
+                />
+
+            <TextView
+                android:id="@+id/verses_header"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="@string/verses"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="start"
+                app:layout_constraintTop_toBottomOf="@id/chapter_summary_tv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="20dp"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/verses_rv"
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/verses_header"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

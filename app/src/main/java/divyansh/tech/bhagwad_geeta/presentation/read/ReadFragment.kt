@@ -1,6 +1,7 @@
 package divyansh.tech.bhagwad_geeta.presentation.read
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,7 +48,7 @@ class ReadFragment: Fragment(), Callbacks {
     }
 
     private fun setupRecyclerView() {
-        chapters_rv.apply {
+        binding.chaptersRv.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = controller.adapter
         }
@@ -73,10 +74,12 @@ class ReadFragment: Fragment(), Callbacks {
 
     override fun onChapterClicked(chapterNum: Int) {
         requireActivity().supportFragmentManager.beginTransaction().apply {
-            ChapterFragment().arguments = Bundle().apply {
+            val frag = ChapterFragment()
+            frag.arguments = Bundle().apply {
                 putInt("NUM", chapterNum)
             }
-            replace(R.id.mainNavHost, ChapterFragment())
+            Log.i("chapter", chapterNum.toString())
+            replace(R.id.mainNavHost, frag)
             commit()
         }
     }

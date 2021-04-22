@@ -9,6 +9,7 @@ import dagger.hilt.android.components.FragmentComponent
 import dagger.hilt.android.scopes.ActivityScoped
 import dagger.hilt.android.scopes.FragmentScoped
 import divyansh.tech.bhagwad_geeta.domain.Callbacks
+import divyansh.tech.bhagwad_geeta.domain.VerseClickCallback
 import divyansh.tech.bhagwad_geeta.domain.chapter.epoxy.ChapterController
 
 @Module
@@ -24,4 +25,9 @@ class FragmentModule {
     @FragmentScoped
     fun provideCallback(fragment: Fragment) =
             fragment as Callbacks
+
+    @Provides
+    @FragmentScoped
+    fun provideVerseClickCallback(fragment: Fragment) =
+        fragment as VerseClickCallback
 }

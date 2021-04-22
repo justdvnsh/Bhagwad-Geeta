@@ -20,6 +20,9 @@ class ChapterRepo @Inject constructor(
     suspend fun getAllChapters() =
         chapterService.getAllChapters()
 
+    suspend fun getChapter(chap_num: Int) =
+        chapterService.getChapter(chap_num = chap_num)
+
     /*
     * Function to get a particular verse based on the chapter
     * @param chap_num -> The chapter number

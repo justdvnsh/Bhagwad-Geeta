@@ -1,9 +1,11 @@
 package divyansh.tech.bhagwad_geeta.data.api
 
 import divyansh.tech.bhagwad_geeta.models.gson.chapter.Chapter
+import divyansh.tech.bhagwad_geeta.models.gson.chapter.ChapterItem
 import divyansh.tech.bhagwad_geeta.models.gson.shlokas.Verses
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Part
 import retrofit2.http.Path
 
 /*
@@ -24,6 +26,11 @@ interface ChapterService {
     */
     @GET("/gita/chapters")
     suspend fun getAllChapters(): Response<Chapter>
+
+    @GET("/gita/{chapNum}")
+    suspend fun getChapter(
+        @Path("chapNum") chap_num: Int
+    ): Response<ChapterItem>
 
     /*
     * Get a particular chapter based on the chapter number
