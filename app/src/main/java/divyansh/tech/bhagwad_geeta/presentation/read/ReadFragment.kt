@@ -7,17 +7,21 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import divyansh.tech.bhagwad_geeta.R
 import divyansh.tech.bhagwad_geeta.databinding.FragmentReadBinding
-import divyansh.tech.bhagwad_geeta.models.chapters.ChapterItem
+import divyansh.tech.bhagwad_geeta.domain.chapter.epoxy.ChapterController
 import divyansh.tech.bhagwad_geeta.utils.ResultWrapper
+import kotlinx.android.synthetic.main.fragment_read.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ReadFragment: Fragment() {
 
     private lateinit var binding: FragmentReadBinding
     private val viewModel: ReadViewModel by viewModels()
+    @Inject lateinit var controller: ChapterController
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,12 +40,14 @@ class ReadFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getDailyContent()
         viewModel.getChapters()
+        setupRecyclerView()
         setupObservers()
     }
 
-    private fun setupRecyclerView(data: List<ChapterItem>) {
-        binding.chaptersRv.withModels {
-            
+    private fun setupRecyclerView() {
+        chapters_rv.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = controller.adapter
         }
     }
 
@@ -57,7 +63,7 @@ class ReadFragment: Fragment() {
         viewModel.chapters.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is ResultWrapper.Loading -> {}
-                is ResultWrapper.Success -> setupRecyclerView(it.data!!)
+                is ResultWrapper.Success -> controller.setData(it.data)
                 is ResultWrapper.Error -> {}
             }
         })

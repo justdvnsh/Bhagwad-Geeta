@@ -7,7 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import divyansh.tech.bhagwad_geeta.data.api.ChapterService
 import divyansh.tech.bhagwad_geeta.utils.C.BASE_URL
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 /*
@@ -25,7 +25,7 @@ class NetworkModule {
     @Singleton
     fun provideRetrofitInstance(): Retrofit =
         Retrofit.Builder()
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
             .build()
 

@@ -1,7 +1,7 @@
 package divyansh.tech.bhagwad_geeta.data.api
 
-import divyansh.tech.bhagwad_geeta.models.chapters.ChapterItem
-import divyansh.tech.bhagwad_geeta.models.verses.Slok
+import divyansh.tech.bhagwad_geeta.models.gson.chapter.Chapter
+import divyansh.tech.bhagwad_geeta.models.gson.shlokas.Verses
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -16,14 +16,14 @@ interface ChapterService {
     * @returns Verse
     * */
     @GET("/gita")
-    suspend fun getRandomVerse(): Response<Slok>
+    suspend fun getRandomVerse(): Response<Verses>
 
     /*
     * Gets all the chapters from gita
     * @returns List of chapters
     */
     @GET("/gita/chapters")
-    suspend fun getAllChapters(): Response<List<ChapterItem>>
+    suspend fun getAllChapters(): Response<Chapter>
 
     /*
     * Get a particular chapter based on the chapter number
@@ -35,5 +35,5 @@ interface ChapterService {
     suspend fun getVerse(
         @Path("chap") chap_num: Int,
         @Path("verse") verse_num: Int
-    ): Response<Slok>
+    ): Response<Verses>
 }

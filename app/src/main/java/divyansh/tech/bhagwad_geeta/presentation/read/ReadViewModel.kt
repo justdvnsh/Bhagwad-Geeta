@@ -1,13 +1,14 @@
 package divyansh.tech.bhagwad_geeta.presentation.read
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import divyansh.tech.bhagwad_geeta.models.verses.Slok
-import divyansh.tech.bhagwad_geeta.domain.ChapterRepo
-import divyansh.tech.bhagwad_geeta.models.chapters.ChapterItem
+import divyansh.tech.bhagwad_geeta.domain.chapter.ChapterRepo
+import divyansh.tech.bhagwad_geeta.models.gson.chapter.ChapterItem
+import divyansh.tech.bhagwad_geeta.models.gson.shlokas.Verses
 import divyansh.tech.bhagwad_geeta.utils.ResultWrapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,8 +22,8 @@ class ReadViewModel @Inject constructor(
     private val chapterRepo: ChapterRepo
 ): ViewModel() {
 
-    private val _dailyContent: MutableLiveData<ResultWrapper<Slok>> = MutableLiveData()
-    val dailyContent: LiveData<ResultWrapper<Slok>>
+    private val _dailyContent: MutableLiveData<ResultWrapper<Verses>> = MutableLiveData()
+    val dailyContent: LiveData<ResultWrapper<Verses>>
         get() = _dailyContent
 
     private val _chapters: MutableLiveData<ResultWrapper<List<ChapterItem>>> = MutableLiveData()
@@ -51,6 +52,7 @@ class ReadViewModel @Inject constructor(
         if (response.isSuccessful) {
             response.body()?.let {
                 _chapters.postValue(ResultWrapper.Success(it))
+                Log.i("VIEWMODEL", it[0].toString())
             }
         } else _chapters.postValue(ResultWrapper.Error(response.message()))
     }
