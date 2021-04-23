@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -67,7 +68,7 @@ class ReadFragment: Fragment(), Callbacks {
             when (it) {
                 is ResultWrapper.Loading -> {}
                 is ResultWrapper.Success -> controller.setData(it.data)
-                is ResultWrapper.Error -> {}
+                is ResultWrapper.Error -> Toast.makeText(requireContext(), "SOMETHING WRONG", Toast.LENGTH_SHORT).show()
             }
         })
     }

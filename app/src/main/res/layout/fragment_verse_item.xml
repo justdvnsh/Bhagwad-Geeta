@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="verse"
+            type="divyansh.tech.bhagwad_geeta.models.gson.shlokas.Verses"
+            />
+    </data>
+
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            >
+
+            <TextView
+                android:id="@+id/chapter_name_tv"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="@{verse.slok}"
+                tools:text="कर्मण्यकर्म यः पश्येदकर्मणि च कर्म यः |\nस बुद्धिमान्मनुष्येषु स युक्तः कृत्स्नकर्मकृत् ||४-१८||"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:gravity="start"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/chapter_transliteration_tv"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="@{verse.transliteration}"
+                tools:text="karmaṇyakarma yaḥ paśyedakarmaṇi ca karma yaḥ .\nsa buddhimānmanuṣyeṣu sa yuktaḥ kṛtsnakarmakṛt ||4-18||"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginTop="10dp"
+                android:gravity="start"
+                app:layout_constraintTop_toBottomOf="@id/chapter_name_tv"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

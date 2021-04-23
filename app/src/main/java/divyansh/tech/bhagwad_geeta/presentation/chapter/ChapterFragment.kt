@@ -93,8 +93,9 @@ class ChapterFragment: Fragment(), VerseClickCallback {
     }
 
     override fun onVerseClick(verseNum: Int) {
+        val frag = VerseFragment.newInstance(chapNum!!, verseNum)
         requireActivity().supportFragmentManager.beginTransaction().apply {
-            replace(R.id.mainNavHost, VerseFragment())
+            replace(R.id.mainNavHost, frag)
             commit()
         }
     }

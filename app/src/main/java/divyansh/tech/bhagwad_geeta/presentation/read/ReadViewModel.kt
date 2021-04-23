@@ -49,6 +49,7 @@ class ReadViewModel @Inject constructor(
     fun getChapters() = viewModelScope.launch(Dispatchers.IO) {
         _chapters.postValue(ResultWrapper.Loading())
         val response = chapterRepo.getAllChapters()
+        Log.i("VIEWMODEL->READ", response.raw().toString())
         if (response.isSuccessful) {
             response.body()?.let {
                 _chapters.postValue(ResultWrapper.Success(it))
