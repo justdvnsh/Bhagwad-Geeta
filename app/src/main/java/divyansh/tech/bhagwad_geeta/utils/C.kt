@@ -5,8 +5,6 @@ import androidx.fragment.app.FragmentManager
 import divyansh.tech.bhagwad_geeta.R
 
 object C {
-    //TODO: Change the API calls to https://bhagavadgita.io/apidocs/#/.
-    // the following service is dismantled
     const val BASE_URL = "https://vedicscripturesapi.herokuapp.com/"
 
     fun setFragment(fragmentManager: FragmentManager, fragment: Fragment, view: Int) {
